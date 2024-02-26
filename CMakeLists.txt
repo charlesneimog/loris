@@ -1,20 +1,12 @@
 cmake_minimum_required(VERSION 3.5)
 project(loris)
 
-file(GLOB loris_src src/*.C)
-list(APPEND source_files ${loris_src})
-file(GLOB loris_include src/*.h)
-list(APPEND include_files ${loris_include})
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/src/loris.h.in ${CMAKE_CURRENT_SOURCE_DIR}/src/loris.h @ONLY)
 
 add_definitions(-DHAVE_FFTW3_H)
 set(libs m fftw3)
 
-include_directories(src)
+file(GLOB SOURCES "src/*.C")
+add_library(loris ${SOURCES})
 
-add_library(loris SHARED ${source_files})
-target_link_libraries(loris ${libs})
-
-install(TARGETS loris LIBRARY DESTINATION lib)
-
-
-
+target_include_directories(loris PUBLIC include)
