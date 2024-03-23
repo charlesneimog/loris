@@ -28,10 +28,10 @@ add_subdirectory(Libraries/fftw-3.3.10)
 set_target_properties(fftw3 PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR})
 set_target_properties(fftw3 PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
-
-
 file(GLOB SOURCES "src/*.C")
 add_library(loris ${SOURCES})
+# add target_include_directories
+target_include_directories(loris PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Libraries/fftw-3.3.10/api)
 
 # compile using C++
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++03")
