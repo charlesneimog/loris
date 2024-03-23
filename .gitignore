@@ -1,2 +1,4 @@
 build/
 loris.h
+Libraries/fftw-3.3.10
+Makefile
