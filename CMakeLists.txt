@@ -36,5 +36,6 @@ add_library(loris ${SOURCES})
 # compile using C++
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++03")
 
+add_definitions(-DHAVE_FFTW3_H)
 target_include_directories(loris PUBLIC include)
 target_link_libraries(loris fftw3)
