@@ -92,10 +92,11 @@ morphing algorithm, see the Loris website:
                          const Envelope * famp, 
                          const Envelope * fbw )
 	{
+		//notifier << "ok1" << endl;
 		PartialList * dst = createPartialList();
 		
-		notifier << "morphing " << src0->size() << " Partials with " <<
-					src1->size() << " Partials" << endl;
+		//notifier << "morphing " << src0->size() << " Partials with " <<
+					//src1->size() << " Partials" << endl;
 		try
 		{			
 			//	make a Morpher object and do it:
@@ -127,8 +128,8 @@ morphing algorithm, see the Loris website:
 		
 		PartialList * dst = createPartialList();
 		
-		notifier << "morphing " << src0->size() << " Partials with " <<
-					src1->size() << " Partials" << endl;
+		//notifier << "morphing " << src0->size() << " Partials with " <<
+					//src1->size() << " Partials" << endl;
 		try
 		{			
 			//	make a Morpher object and do it:
@@ -159,8 +160,8 @@ morphing algorithm, see the Loris website:
 	{
 		PartialList * dst = createPartialList();
 		
-		notifier << "morphing " << src0->size() << " Partials with " <<
-					src1->size() << " Partials" << endl;
+		//notifier << "morphing " << src0->size() << " Partials with " <<
+					//src1->size() << " Partials" << endl;
 		try
 		{			
 			//	make a Morpher object and do it:
@@ -171,24 +172,24 @@ morphing algorithm, see the Loris website:
 
 			if ( src0RefLabel != 0 )
 			{
-			   notifier << "using Partial labeled " << src0RefLabel;
-			   notifier << " as reference Partial for first morph source" << endl;
+			   //notifier << "using Partial labeled " << src0RefLabel;
+			   //notifier << " as reference Partial for first morph source" << endl;
 			   m.setSourceReferencePartial( *src0, src0RefLabel );
 			}
 			else
 			{
-			   notifier << "using no reference Partial for first morph source" << endl;
+			   //notifier << "using no reference Partial for first morph source" << endl;
 			}
 
 			if ( src1RefLabel != 0 )
 			{
-			   notifier << "using Partial labeled " << src1RefLabel;
-			   notifier << " as reference Partial for second morph source" << endl;
+			   //notifier << "using Partial labeled " << src1RefLabel;
+			   //notifier << " as reference Partial for second morph source" << endl;
 			   m.setTargetReferencePartial( *src1, src1RefLabel );
 			}
 			else
 			{
-			   notifier << "using no reference Partial for second morph source" << endl;
+			   //notifier << "using no reference Partial for second morph source" << endl;
 			}			
 			
 			
@@ -217,8 +218,8 @@ morphing algorithm, see the Loris website:
 		
 		PartialList * dst = createPartialList();
 		
-		notifier << "morphing " << src0->size() << " Partials with " <<
-					src1->size() << " Partials" << endl;
+		//notifier << "morphing " << src0->size() << " Partials with " <<
+					//src1->size() << " Partials" << endl;
 		try
 		{			
 			//	make a Morpher object and do it:
@@ -229,24 +230,24 @@ morphing algorithm, see the Loris website:
 
 			if ( src0RefLabel != 0 )
 			{
-			   notifier << "using Partial labeled " << src0RefLabel;
-			   notifier << " as reference Partial for first morph source" << endl;
+			   //notifier << "using Partial labeled " << src0RefLabel;
+			   //notifier << " as reference Partial for first morph source" << endl;
 			   m.setSourceReferencePartial( *src0, src0RefLabel );
 			}
 			else
 			{
-			   notifier << "using no reference Partial for first morph source" << endl;
+			   //notifier << "using no reference Partial for first morph source" << endl;
 			}
 
 			if ( src1RefLabel != 0 )
 			{
-			   notifier << "using Partial labeled " << src1RefLabel;
-			   notifier << " as reference Partial for second morph source" << endl;
+			   //notifier << "using Partial labeled " << src1RefLabel;
+			   //notifier << " as reference Partial for second morph source" << endl;
 			   m.setTargetReferencePartial( *src1, src1RefLabel );
 			}
 			else
 			{
-			   notifier << "using no reference Partial for second morph source" << endl;
+			   //notifier << "using no reference Partial for second morph source" << endl;
 			}			
 			
 			

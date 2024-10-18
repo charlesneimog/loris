@@ -187,7 +187,7 @@ namespace std {
 	//	block below:
 	static void printf_notifier( const char * s )
 	{
-		printf("*\t%s\n", s);
+		//printf("*\t%s\n", s);
 	}	
 %}
 
