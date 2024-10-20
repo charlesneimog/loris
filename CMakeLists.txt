@@ -44,21 +44,6 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -static-libgcc -static-libstdc++")
 # ╰──────────────────────────────────────╯
 find_package(SWIG REQUIRED)
 include(${SWIG_USE_FILE})
-#
-# set(ALL_IFILES scripting/loris.i scription/lorisPartialList.i
-# scripting/lorisFundamental.i scripting/lorisEnvelope.i
-# scripting/lorisChannelizer.i scripting/lorisSynthesizer.i)
-#
-# foreach(IFILE ${ALL_IFILES}) set_property(SOURCE ${IFILE} PROPERTY
-# SWIG_MODULE_NAME loris) set_property(SOURCE ${IFILE} PROPERTY CPLUSPLUS ON)
-# set_property(SOURCE ${IFILE} PROPERTY SWIG_FLAGS -module -avoid-version)
-# set_property(SOURCE ${IFILE} PROPERTY DEPENDS loris) set_property(SOURCE
-# ${IFILE} PROPERTY INCLUDE_DIRECTORIES ${CMAKE_CURRENT_SOURCE_DIR}/src)
-# endforeach()
-#
-# swig_add_library( _loris LANGUAGE python SOURCES scripting/loris.i)
-#
-# target_link_libraries(_loris PUBLIC ${Python3_LIBRARIES} loris)
 
 set(SWIG_INTERFACE ${CMAKE_SOURCE_DIR}/scripting/loris.i)
 set(PYTHON_WRAPPER ${CMAKE_BINARY_DIR}/loris_wrap.cxx)
