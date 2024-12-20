@@ -4,6 +4,10 @@ project(loris)
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/src/loris.h.in
                ${CMAKE_CURRENT_SOURCE_DIR}/src/loris.h @ONLY)
 
+if(MSVC)
+  set(CMAKE_C_COMPILER "gcc")
+endif()
+
 # ╭──────────────────────────────────────╮
 # │             Static FFTW3             │
 # ╰──────────────────────────────────────╯
@@ -32,12 +36,19 @@ add_library(loris STATIC ${SOURCES})
 target_include_directories(
   loris PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Libraries/fftw-3.3.10/api)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++03")
 add_definitions(-DHAVE_FFTW3_H)
 target_include_directories(loris PUBLIC include ${CMAKE_CURRENT_SOURCE_DIR}/src)
 target_link_libraries(loris fftw3)
 set_target_properties(loris PROPERTIES POSITION_INDEPENDENT_CODE ON)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -static-libgcc -static-libstdc++")
+
+if(LINUX)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -static-libgcc -static-libstdc++")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++03")
+elseif(APPLE)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++03")
+elseif(MSVC)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++03")
+endif()
 
 # ╭──────────────────────────────────────╮
 # │         SWIG Python Wrapper          │

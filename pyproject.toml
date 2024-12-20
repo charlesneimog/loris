@@ -2,10 +2,10 @@
 name = "loris"
 version = "1.8"
 authors = [{name = "Charles K. Neimog", email = "charlesneimog@outlook.com"}]
-description = "A Python binding (pybind11) for the Loris C++ library."
+description = "Loris is an open source C++ class library implementing analysis, manipulation, and synthesis of digitized sounds using the Reassigned Bandwidth-Enhanced Additive Sound Model."
 readme = "README.md"
 readme-content-type = "text/markdown"
-repository = "https://github.com/charlesneimog/lorisbind"
+repository = "https://github.com/charlesneimog/loris"
 requires-python = ">=3.9"
 
 [build-system]
