@@ -36,7 +36,12 @@
 %include exception.i 
 %include typemaps.i 
 %include std_vector.i
-%include std_list.i
+
+#ifdef SWIGLUA
+%include "lua.i" // Lua-specific interface file
+#endif
+
+%module loris
 
 // ----------------------------------------------------------------
 //		docstring for the Loris module (Python)

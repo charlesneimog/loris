@@ -1,2 +1,5 @@
 dist
 loris.egg-info
+Libraries/fftw-3.3.10
+build
+.cache/clangd/index
