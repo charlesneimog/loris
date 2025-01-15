@@ -83,11 +83,10 @@ if(PYTHON)
 
   target_link_libraries(_loris PRIVATE ${Python3_LIBRARIES} loris)
   add_dependencies(_loris GeneratePythonWrapper)
-  install(TARGETS _loris DESTINATION ${SKBUILD_PROJECT_NAME})
-  install(FILES ${CMAKE_CURRENT_BINARY_DIR}/loris.py
-          DESTINATION ${SKBUILD_PROJECT_NAME})
-  install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/scripting/__init__.py
-          DESTINATION ${SKBUILD_PROJECT_NAME})
+
+  install(TARGETS _loris DESTINATION loris)
+  install(FILES ${CMAKE_CURRENT_BINARY_DIR}/loris.py DESTINATION loris)
+  install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/scripting/__init__.py DESTINATION loris)
 endif()
 
 # ╭──────────────────────────────────────╮
