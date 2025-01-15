@@ -5,7 +5,7 @@
 #include <vector>
 #include <iostream>
 
-std::vector<double> get_vector_from_lua(std::vector<double> vec) {
+std::vector<double> get_vector_from_table(std::vector<double> vec) {
     return vec;
 }
 %}
@@ -27,7 +27,7 @@ std::vector<double> get_vector_from_lua(std::vector<double> vec) {
     }
 }
 
-%typemap(argout) std::vector<double> {
+%typemap(argout) const std::vector<double> {
     lua_newtable(L);
     for (size_t i = 0; i < $1.size(); ++i) {
         lua_pushnumber(L, $1[i]);
@@ -36,7 +36,7 @@ std::vector<double> get_vector_from_lua(std::vector<double> vec) {
     SWIG_arg++;
 }
 
-%typemap(argout) std::vector<double>* {
+%typemap(argout) const std::vector<double>* {
     lua_newtable(L);
     for (size_t i = 0; i < $1->size(); ++i) {
         lua_pushnumber(L, $1->at(i));
@@ -48,5 +48,6 @@ std::vector<double> get_vector_from_lua(std::vector<double> vec) {
 
 
 // Wrap the function
-std::vector<double> get_vector_from_lua(std::vector<double> vec);
+const std::vector<double> get_vector_from_table(std::vector<double> vec);
+
 
