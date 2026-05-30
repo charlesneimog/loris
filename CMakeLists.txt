@@ -14,6 +14,25 @@ option(LUA "Build Lua Wrapper" OFF)
 # │             Static FFTW3             │
 # ╰──────────────────────────────────────╯
 if(NOT TARGET fftw3f)
+    set(BUILD_SHARED_LIBS
+        OFF
+        CACHE BOOL "" FORCE)
+    set(BUILD_TESTS
+        OFF
+        CACHE BOOL "" FORCE)
+    set(ENABLE_FLOAT
+        ON
+        CACHE BOOL "Build single-precision (fftw3f)" FORCE)
+    set(ENABLE_LONG_DOUBLE
+        OFF
+        CACHE BOOL "" FORCE)
+    set(ENABLE_QUAD_PRECISION
+        OFF
+        CACHE BOOL "" FORCE)
+    set(DISABLE_FORTRAN
+        ON
+        CACHE BOOL "" FORCE)
+
     set(FFTW3_FILE ${CMAKE_BINARY_DIR}/fftw-3.3.10.tar.gz)
     if(NOT EXISTS ${FFTW3_FILE})
         message(STATUS "Downloading FFTW3")
@@ -48,7 +67,12 @@ target_include_directories(loris PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Libraries/ff
 add_definitions(-DHAVE_FFTW3_H)
 target_include_directories(loris PUBLIC include ${CMAKE_CURRENT_SOURCE_DIR}/src)
 target_link_libraries(loris PUBLIC fftw3)
-set_target_properties(loris PROPERTIES POSITION_INDEPENDENT_CODE ON)
+set_target_properties(
+    loris
+    PROPERTIES POSITION_INDEPENDENT_CODE ON
+               CXX_STANDARD 11
+               CXX_STANDARD_REQUIRED ON
+               CXX_EXTENSIONS OFF)
 
 if(LINUX)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -static-libgcc -static-libstdc++")
