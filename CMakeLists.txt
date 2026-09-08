@@ -7,13 +7,13 @@ if(MSVC)
     set(CMAKE_C_COMPILER "gcc")
 endif()
 
-option(PYTHON "Build Python Wrapper" ON)
+option(PYTHON "Build Python Wrapper" OFF)
 option(LUA "Build Lua Wrapper" OFF)
 
 # ╭──────────────────────────────────────╮
 # │             Static FFTW3             │
 # ╰──────────────────────────────────────╯
-if(NOT TARGET fftw3f)
+if(NOT TARGET fftw3)
     set(BUILD_SHARED_LIBS
         OFF
         CACHE BOOL "" FORCE)
@@ -21,7 +21,7 @@ if(NOT TARGET fftw3f)
         OFF
         CACHE BOOL "" FORCE)
     set(ENABLE_FLOAT
-        ON
+        OFF
         CACHE BOOL "Build single-precision (fftw3f)" FORCE)
     set(ENABLE_LONG_DOUBLE
         OFF
@@ -52,8 +52,8 @@ if(NOT TARGET fftw3f)
         DIRECTORY ${CMAKE_BINARY_DIR}/fftw-3.3.10
         PROPERTY BUILDSYSTEM_TARGETS)
 
-    set_target_properties(fftw3f PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
-    set_target_properties(fftw3f PROPERTIES POSITION_INDEPENDENT_CODE ON)
+    set_target_properties(fftw3 PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
+    set_target_properties(fftw3 PROPERTIES POSITION_INDEPENDENT_CODE ON)
     include_directories(${CMAKE_BINARY_DIR}/fftw-3.3.10/api)
 endif()
 
@@ -66,11 +66,11 @@ target_include_directories(loris PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Libraries/ff
 
 add_definitions(-DHAVE_FFTW3_H)
 target_include_directories(loris PUBLIC include ${CMAKE_CURRENT_SOURCE_DIR}/src)
-target_link_libraries(loris PUBLIC fftw3f)
+target_link_libraries(loris PUBLIC fftw3)
+set_target_properties(loris PROPERTIES POSITION_INDEPENDENT_CODE ON)
 set_target_properties(
     loris
     PROPERTIES POSITION_INDEPENDENT_CODE ON
-               CXX_STANDARD 11
                CXX_STANDARD_REQUIRED ON
                CXX_EXTENSIONS OFF)
 
