@@ -66,7 +66,7 @@ target_include_directories(loris PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Libraries/ff
 
 add_definitions(-DHAVE_FFTW3_H)
 target_include_directories(loris PUBLIC include ${CMAKE_CURRENT_SOURCE_DIR}/src)
-target_link_libraries(loris PUBLIC fftw3)
+target_link_libraries(loris PUBLIC fftw3f)
 set_target_properties(
     loris
     PROPERTIES POSITION_INDEPENDENT_CODE ON
